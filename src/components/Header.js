@@ -8,7 +8,30 @@ const Header = (props) => {
                 <img src="/images/logo.svg" alt="Disney+" />
             </Logo>
             <NavMenu>
-                menu
+                <a href="/home">
+                    <img src="/images/home-icon.svg" alt="HOME" />
+                    <span>HOME</span>
+                </a>
+                <a href="/">
+                    <img src="/images/search-icon.svg" alt="SEARCH" />
+                    <span>SEARCH</span>
+                </a>
+                <a href="/">
+                    <img src="/images/watchlist-icon.svg" alt="WATCHLIST" />
+                    <span>WATCHLIST</span>
+                </a>
+                <a href="/">
+                    <img src="/images/original-icon.svg" alt="ORIGINALS" />
+                    <span>ORIGINALS</span>
+                </a>
+                <a href="/">
+                    <img src="/images/movie-icon.svg" alt="MOVIES" />
+                    <span>MOVIES</span>
+                </a>
+                <a href="/">
+                    <img src="/images/series-icon.svg" alt="SERIES" />
+                    <span>SERIES</span>
+                </a>
             </NavMenu>
         </Nav>
     )
@@ -53,6 +76,53 @@ const NavMenu = styled.div`
     position: relative;
     margin-right: auto;
     margin-left: 25px;
+
+    a {
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        
+        img {
+            height: 20px;
+            min-width: 20px;
+            width: 20px;
+        }
+
+        span{
+            color: rgb(249, 249, 249);
+            font-size: 13px;
+            letter-spacing: 1.42px;
+            line-height: 1.08;
+            padding: 2px 0;
+            white-space: nowrap;
+            position: relative;
+
+            &:before{
+                content: '';
+                background-color: rgb(249, 249, 249);
+                border-radius: 0 0 4px 4px;
+                bottom: -6px;
+                height: 2px;
+                opacity: 0;
+                position: absolute;
+                right: 0;
+                left: 0;
+                transform-origin: left center;
+                transform: scaleX(0);
+                transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+                visibility: hidden;
+                width: auto;
+            }
+        }
+        &:hover{
+            span:before {
+                transform: scaleX(1);
+                visibility: visible;
+                opacity: 1 !important;
+            }
+        }
+    }
+    
 
     @media (max-width: 768px){
         display: none;
