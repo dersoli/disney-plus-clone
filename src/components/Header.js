@@ -1,8 +1,16 @@
 import { styled } from "styled-components"
 import { UserAuth } from "../context/AuthContext"
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom';
+import { selectUserName, selectUserEmail, selectUserPhoto } from "../features/user/userSlice";
 
 
 const Header = (props) => {
+    const dispach = useDispatch();
+    const history = useHistory();
+    const username = useSelector(selectUserName);
+    const userPhoto = useSelector(selectUserPhoto);
+
     const {user, logOut} = UserAuth();
 
     const { googleSignIn } = UserAuth();
