@@ -3,8 +3,17 @@ import { UserAuth } from "../context/AuthContext"
 
 
 const Header = (props) => {
+    const {user, logOut} = UserAuth();
 
     const { googleSignIn } = UserAuth();
+
+    const handleSignOut = async () => {
+        try {
+            await logOut();
+        } catch(error) {
+            console.log(error)
+        }
+    }
 
     const handleGoogleSignIn = async () => {
         try {
@@ -47,7 +56,8 @@ const Header = (props) => {
                     <span>SERIES</span>
                 </a>
             </NavMenu>
-            <Login onClick={handleGoogleSignIn}>Login</Login>
+            {user?.displayName ? <Login onClick={handleSignOut}>Logout</Login> : <Login onClick={handleGoogleSignIn}>Login</Login>}
+            
         </Nav>
     )
 }
